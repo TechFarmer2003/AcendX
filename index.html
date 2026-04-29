@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shadow Quest</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="phone-shell">
+    <section class="auth-screen" id="authScreen">
+      <div class="auth-panel">
+        <span class="status-pill">System Login</span>
+        <h1>Shadow Quest</h1>
+        <p>Build routines like daily missions. Clear habits, earn XP, unlock ranks.</p>
+
+        <div class="auth-tabs" role="tablist" aria-label="Authentication mode">
+          <button class="tab-button active" id="loginTab" type="button">Login</button>
+          <button class="tab-button" id="signupTab" type="button">Sign up</button>
+        </div>
+
+        <form class="auth-form" id="authForm">
+          <label>
+            Email
+            <input id="usernameInput" name="email" type="email" autocomplete="email" required placeholder="hunter@email.com">
+          </label>
+          <label>
+            Password
+            <input id="passwordInput" name="password" type="password" autocomplete="current-password" required minlength="4" placeholder="Password">
+          </label>
+          <button class="primary-action" type="submit" id="authSubmit">Enter Dungeon</button>
+          <button class="secondary-action" type="button" id="googleButton">Continue with Google</button>
+          <p class="form-message" id="authMessage" aria-live="polite"></p>
+        </form>
+
+      </div>
+    </section>
+
+    <section class="app-screen hidden" id="appScreen">
+      <header class="app-header">
+        <div class="profile-row">
+          <div class="avatar" aria-hidden="true">SQ</div>
+          <div>
+            <span>Hello</span>
+            <h2 id="hunterName">Hunter</h2>
+          </div>
+        </div>
+        <div class="header-actions">
+          <button class="circle-button" type="button" aria-label="Calendar">Cal</button>
+          <button class="circle-button" type="button" aria-label="Settings">Set</button>
+          <button class="circle-button" id="logoutButton" type="button" aria-label="Log out">Out</button>
+        </div>
+      </header>
+
+      <section class="hero-summary">
+        <p id="todayLabel">Today</p>
+        <h1>Ready for Today's Challenges?</h1>
+        <div class="rank-strip">
+          <span>Rank <b id="rankLabel">E</b></span>
+          <span id="levelLabel">Level 1</span>
+          <span><b id="streakCount">0</b> day streak</span>
+        </div>
+        <div class="xp-track" aria-label="Experience progress">
+          <span id="xpFill"></span>
+        </div>
+        <div class="level-row">
+          <strong id="xpLabel">0 / 100 XP</strong>
+          <strong><span id="pointsCount">0</span> pts</strong>
+          <strong><span id="calorieCount">0</span> kcal</strong>
+        </div>
+      </section>
+
+      <label class="search-box">
+        <span>O</span>
+        <input id="searchInput" placeholder="Search habit">
+      </label>
+
+      <nav class="filter-tabs" aria-label="Habit filters">
+        <button class="filter-tab active" data-section="quests" type="button">Habits</button>
+        <button class="filter-tab" data-section="todo" type="button">Tasks</button>
+        <button class="filter-tab" data-section="food" type="button">Calories</button>
+        <button class="filter-tab" data-section="achievements" type="button">Trophies</button>
+      </nav>
+
+      <section class="content-section active" id="questsSection">
+        <div class="section-heading">
+          <div>
+            <h3>Your Habit</h3>
+            <p id="habitCount">0 active habits</p>
+          </div>
+          <button class="small-button" id="resetDayButton" type="button">Reset</button>
+        </div>
+        <div class="habit-list" id="questList"></div>
+      </section>
+
+      <section class="content-section" id="todoSection">
+        <div class="section-heading">
+          <div>
+            <h3>Side Quests</h3>
+            <p>Small wins still give XP.</p>
+          </div>
+        </div>
+        <form class="inline-form" id="todoForm">
+          <input id="todoInput" placeholder="Add a task" required>
+          <button type="submit">+</button>
+        </form>
+        <div class="stack-list" id="todoList"></div>
+      </section>
+
+      <section class="content-section" id="foodSection">
+        <div class="section-heading">
+          <div>
+            <h3>Calories</h3>
+            <p>Daily fuel target</p>
+          </div>
+          <strong id="calorieGoalLabel">0 / 2200</strong>
+        </div>
+        <form class="inline-form split-form" id="calorieForm">
+          <input id="foodInput" placeholder="Food" required>
+          <input id="calorieInput" type="number" inputmode="numeric" min="1" placeholder="kcal" required>
+          <button type="submit">+</button>
+        </form>
+        <div class="calorie-meter"><span id="calorieFill"></span></div>
+        <div class="stack-list" id="foodList"></div>
+      </section>
+
+      <section class="content-section" id="achievementsSection">
+        <div class="section-heading">
+          <div>
+            <h3>Achievements</h3>
+            <p>Unlock hunter milestones.</p>
+          </div>
+        </div>
+        <div class="stack-list" id="achievementList"></div>
+      </section>
+
+      <nav class="bottom-nav" aria-label="Primary app navigation">
+        <button class="nav-item active" data-section="quests" type="button"><span>H</span>Home</button>
+        <button class="nav-item" data-section="todo" type="button"><span>+</span>Add</button>
+        <button class="nav-item" data-section="food" type="button"><span>F</span>Food</button>
+        <button class="nav-item" data-section="achievements" type="button"><span>S</span>Stats</button>
+      </nav>
+    </section>
+  </main>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>
