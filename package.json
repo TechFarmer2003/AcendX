@@ -1,7 +1,4 @@
 {
-  "scripts": {
-    "start": "node server.mjs"
-  },
   "private": true,
   "dependencies": {},
   "devDependencies": {}
