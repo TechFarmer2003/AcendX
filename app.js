@@ -1,4 +1,4 @@
-import { firebaseConfig, hasFirebaseConfig } from "./firebase-config.js";
+import { getFirebaseConfig, hasFirebaseConfig } from "./firebase-config.js";
 
 const STORAGE_KEY = "shadowQuestUsers";
 const SESSION_KEY = "shadowQuestSession";
@@ -175,7 +175,7 @@ async function initFirebase() {
   ]);
 
   firebaseApi = authModule;
-  firebaseAuth = authModule.getAuth(initializeApp(firebaseConfig));
+  firebaseAuth = authModule.getAuth(initializeApp(getFirebaseConfig()));
   await authModule.setPersistence(firebaseAuth, authModule.browserLocalPersistence);
   firebaseReady = true;
 

@@ -8,6 +8,16 @@ export const firebaseConfig = {
   measurementId: "G-7186C90RC1"
 };
 
+export function getFirebaseConfig() {
+  const hostname = typeof window !== "undefined" ? window.location.hostname : "";
+  const isVercel = hostname.endsWith(".vercel.app");
+
+  return {
+    ...firebaseConfig,
+    authDomain: isVercel ? hostname : firebaseConfig.authDomain
+  };
+}
+
 export function hasFirebaseConfig() {
   return !Object.values(firebaseConfig).some(value => value.startsWith("PASTE_"));
 }
